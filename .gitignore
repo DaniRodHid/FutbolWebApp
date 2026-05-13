@@ -1,0 +1,7 @@
+/IdeSrc/
+/AppSrc/Config/
+*.exe
+*.cfgh
+*.dbf
+*.k*
+/Programs/
