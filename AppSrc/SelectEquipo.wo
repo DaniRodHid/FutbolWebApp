@@ -76,15 +76,15 @@ Object oSelectEquipo is a cWebView
 // ToDo: Fill in the from-parent child Select view object name for navigate forward
 //        WebRegisterPath ntNavigateForward oSelectView
 
+        WebRegisterPath ntNavigateForward oZoomEquipo
+
         Procedure OnRowClick String sRowId
             tWebNavigateData NavigateData
             Get GetNavigateData to NavigateData
 
             Case Begin
                 Case (NavigateData.eNavigateType = nfFromParent)
-// ToDo: Fill in the from-parent child Select view object name for navigate forward
-Error DFERR_PROGRAM "NavigateForward to this from-parent child Select view not yet defined"
-//                    Send NavigateForward of oSelectView Self
+                    Send NavigatePath ntNavigateForward oZoomEquipo
                     Case Break
 
                 Case (NavigateData.eNavigateType = nfFromChild)
@@ -96,10 +96,8 @@ Error DFERR_PROGRAM "NavigateForward to this from-parent child Select view not y
                     Case Break
 
                 Case Else // must be nfUndefined
-// ToDo: Fill in the from-parent child Select view object name for navigate forward
-Error DFERR_PROGRAM "NavigateForward to this from-parent child Select view not yet defined"
-//                    Send NavigateForward of oSelectView Self
-
+                    Send NavigatePath ntNavigateForward oZoomEquipo
+                    
             Case End
         End_Procedure
 
