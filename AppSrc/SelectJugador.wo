@@ -8,6 +8,7 @@ Use cWebMenuGroup.pkg
 Use cWebMenuItem.pkg
 Use cWebColumnButton.pkg
 Use cWebColumn.pkg
+Use ZoomJugador.wo
 
 Use cligaDataDictionary.dd
 Use cequipoDataDictionary.dd
@@ -99,9 +100,7 @@ WebRegisterPath ntNavigateForward oZoomJugador
 
             Case Begin
                 Case (NavigateData.eNavigateType = nfFromParent)
-// ToDo: Fill in the from-parent child Select view object name for navigate forward
- Send NavigatePath ntNavigateForward oZoomJugador
-//                    Send NavigateForward of oSelectView Self
+                    Send NavigatePath ntNavigateForward oZoomJugador
                     Case Break
 
                 Case (NavigateData.eNavigateType = nfFromChild)
@@ -113,7 +112,7 @@ WebRegisterPath ntNavigateForward oZoomJugador
                     Case Break
 
                 Case Else // must be nfUndefined
-                 Send NavigatePath ntNavigateForward oZoomJugador
+                    Send NavigatePath ntNavigateForward oZoomJugador
 
             Case End
         End_Procedure
@@ -140,8 +139,8 @@ WebRegisterPath ntNavigateForward oZoomJugador
             Set psCSSClass to "WebClearMenuItem"
             Set psCaption to "New"
 
-// ToDo: Fill in the from-main Zoom view object name for navigate forward
-//            WebRegisterPath ntNavigateForward oZoomView
+            // CAMBIO: Registrar la ruta hacia el Zoom de Jugador
+            WebRegisterPath ntNavigateForward oZoomJugador
 
             Procedure OnClick
                 Send NavigatePath
@@ -151,7 +150,7 @@ WebRegisterPath ntNavigateForward oZoomJugador
                 Move True to NavigateData.bNewRecord
             End_Procedure
 
-        End_Object 
+        End_Object
     End_Object 
 
     Procedure OnNavigateForward tWebNavigateData NavigateData Integer hoInvokingView Integer hoInvokingObject
