@@ -85,7 +85,9 @@ Object oZoomJugador is a cWebView
             Set piColumnSpan to 6
             Set piColumnIndex to 0
             
-            // 
+            // ¿Hay relación entre ellas?
+            // Hay relación desde el lado de la base de datos, pero no hay una relación desde la navegación
+            // NavigateForwardCustom es un enlace directo, el resultado no afecta a Jugador
             WebRegisterPath ntNavigateForwardCustom oSelectPosicion
 
             Procedure OnClick
@@ -180,7 +182,12 @@ Object oZoomJugador is a cWebView
     Procedure OnNavigateForward tWebNavigateData NavigateData Integer hoInvokingView Integer hoInvokingObject
         Case Begin
             Case (NavigateData.eNavigateType = nfFromMain)
-                // If from main, this is a propbably a main file Select to Zoom.
+            
+            // Al venir de un Select el InvokingObject es la lista
+            // o el botón de detalle del Select anterior. Sirve para saber qué objeto originó el salto al Zoom.
+            
+            
+            // If from main, this is a propbably a main file Select to Zoom.
                 Case Break
 
             Case (NavigateData.eNavigateType = nfFromParent)
